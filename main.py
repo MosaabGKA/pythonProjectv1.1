@@ -72,7 +72,7 @@ def main(page: ft.Page):
                         for i in selected:
                             pics_grid.current.controls[i].style.side = ft.BorderSide(0, ft.colors.GREEN)
                             pics_grid.current.controls[i].disabled = True
-                            pics_grid.current.controls[i].content.content.src = f"{answer_pairs.index(selected)}.jpg"
+                            pics_grid.current.controls[i].content.content.src = f"pics/{answer_pairs.index(selected)}.jpg"
                         page.update()
                         correct_matches.remove(selected)
                         selected.clear()
@@ -83,7 +83,7 @@ def main(page: ft.Page):
                         for i in selected_mirror:
                             pics_grid.current.controls[i].style.side = ft.BorderSide(0, ft.colors.GREEN)
                             pics_grid.current.controls[i].disabled = True
-                            pics_grid.current.controls[i].content.content.src = f"{answer_pairs.index(selected_mirror)}.jpg"
+                            pics_grid.current.controls[i].content.content.src = f"pics/{answer_pairs.index(selected_mirror)}.jpg"
                         page.update()
                         correct_matches.remove(selected_mirror)
                         selected.clear()
@@ -104,7 +104,7 @@ def main(page: ft.Page):
                 pics_grid.current.controls[indx] = ft.OutlinedButton(
                     content=ft.Container(
                         content=ft.Image(
-                            src=f"{i}.jpg",
+                            src=f"pics/{i}.jpg",
                             width=180,
                             height=120,
                             fit=ft.ImageFit.COVER,
@@ -127,7 +127,7 @@ def main(page: ft.Page):
                 pics_grid.current.controls[indx] = ft.OutlinedButton(
                     content=ft.Container(
                         content=ft.Image(
-                            src="q.jpg",
+                            src="pics/q.jpg",
                             width=180,
                             height=120,
                             fit=ft.ImageFit.COVER,
