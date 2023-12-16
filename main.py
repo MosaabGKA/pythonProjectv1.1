@@ -54,17 +54,20 @@ def main(page: ft.Page):
 
         def picture_selected(e):
             if len(selected) == 0:
-                selected.append(e.control.data)
+                selected.append(e.control.data[0])
                 e.control.style.side = ft.BorderSide(2, ft.colors.WHITE)
+                e.control.content.content.src = f"pics/{e.control.data[1]}.jpg"
                 page.update()
             else:
-                if e.control.data in selected:
+                if e.control.data[0] in selected:
                     e.control.style.side = ft.BorderSide(0, ft.colors.WHITE)
+                    e.control.content.content.src = f"pics/q.jpg"
                     page.update()
-                    selected.remove(e.control.data)
+                    selected.remove(e.control.data[0])
                 else:
-                    selected.append(e.control.data)
+                    selected.append(e.control.data[0])
                     e.control.style.side = ft.BorderSide(2, ft.colors.WHITE)
+                    e.control.content.content.src = f"pics/{e.control.data[1]}.jpg"
                     page.update()
                     selected_mirror = selected[-1:-3:-1]
                     time.sleep(0.5)
@@ -72,7 +75,6 @@ def main(page: ft.Page):
                         for i in selected:
                             pics_grid.current.controls[i].style.side = ft.BorderSide(0, ft.colors.GREEN)
                             pics_grid.current.controls[i].disabled = True
-                            pics_grid.current.controls[i].content.content.src = f"pics/{answer_pairs.index(selected)}.jpg"
                         page.update()
                         correct_matches.remove(selected)
                         selected.clear()
@@ -83,7 +85,6 @@ def main(page: ft.Page):
                         for i in selected_mirror:
                             pics_grid.current.controls[i].style.side = ft.BorderSide(0, ft.colors.GREEN)
                             pics_grid.current.controls[i].disabled = True
-                            pics_grid.current.controls[i].content.content.src = f"pics/{answer_pairs.index(selected_mirror)}.jpg"
                         page.update()
                         correct_matches.remove(selected_mirror)
                         selected.clear()
@@ -93,6 +94,7 @@ def main(page: ft.Page):
                     else:
                         for i in selected:
                             pics_grid.current.controls[i].style.side = ft.BorderSide(0, ft.colors.WHITE)
+                            pics_grid.current.controls[i].content.content.src = f"pics/q.jpg"
                         page.update()
                         selected.clear()
                         selected_mirror.clear()
@@ -137,7 +139,7 @@ def main(page: ft.Page):
                     style=ft.ButtonStyle(
                         shape=ft.RoundedRectangleBorder(radius=7),
                     ),
-                    data=indx,
+                    data=[indx, i],
                     on_click=picture_selected,
                 )
         page.update()
