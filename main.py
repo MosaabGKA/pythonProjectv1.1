@@ -56,18 +56,18 @@ def main(page: ft.Page):
             if len(selected) == 0:
                 selected.append(e.control.data[0])
                 e.control.style.side = ft.BorderSide(2, ft.colors.WHITE)
-                e.control.content.content.src = f"pics/{e.control.data[1]}.jpg"
+                e.control.content.content.src = f"/images/{e.control.data[1]}.jpg"
                 page.update()
             else:
                 if e.control.data[0] in selected:
                     e.control.style.side = ft.BorderSide(0, ft.colors.WHITE)
-                    e.control.content.content.src = f"pics/q.jpg"
+                    e.control.content.content.src = f"/images/q.jpg"
                     page.update()
                     selected.remove(e.control.data[0])
                 else:
                     selected.append(e.control.data[0])
                     e.control.style.side = ft.BorderSide(2, ft.colors.WHITE)
-                    e.control.content.content.src = f"pics/{e.control.data[1]}.jpg"
+                    e.control.content.content.src = f"/images/{e.control.data[1]}.jpg"
                     page.update()
                     selected_mirror = selected[-1:-3:-1]
                     time.sleep(0.5)
@@ -94,7 +94,7 @@ def main(page: ft.Page):
                     else:
                         for i in selected:
                             pics_grid.current.controls[i].style.side = ft.BorderSide(0, ft.colors.WHITE)
-                            pics_grid.current.controls[i].content.content.src = f"pics/q.jpg"
+                            pics_grid.current.controls[i].content.content.src = f"/images/q.jpg"
                         page.update()
                         selected.clear()
                         selected_mirror.clear()
@@ -106,7 +106,7 @@ def main(page: ft.Page):
                 pics_grid.current.controls[indx] = ft.OutlinedButton(
                     content=ft.Container(
                         content=ft.Image(
-                            src=f"pics/{i}.jpg",
+                            src=f"/images/{i}.jpg",
                             width=180,
                             height=120,
                             fit=ft.ImageFit.COVER,
@@ -129,7 +129,7 @@ def main(page: ft.Page):
                 pics_grid.current.controls[indx] = ft.OutlinedButton(
                     content=ft.Container(
                         content=ft.Image(
-                            src="pics/q.jpg",
+                            src="/images/q.jpg",
                             width=180,
                             height=120,
                             fit=ft.ImageFit.COVER,
@@ -184,4 +184,4 @@ def main(page: ft.Page):
     page.update()
 
 
-ft.app(target=main)
+ft.app(target=main, assets_dir="assets")
